@@ -3,7 +3,7 @@ from win32clipboard import OpenClipboard, GetClipboardData, CloseClipboard
 from PIL import ImageGrab
 from PIL.PngImagePlugin import PngImageFile
 from time import sleep
-from keyboard import is_pressed, press_and_release
+from keyboard import is_pressed, 
 from win32process import GetProcessWindowStation, GetWindowThreadProcessId
 from win32gui import GetForegroundWindow, GetWindowText
 from psutil import Process
@@ -42,23 +42,6 @@ def getActiveWindowTitle():
 
 
 
-# def findAllLocationOfFolder(folder):
-#     drives = getDrives()
-#     for drive in drives:
-#         findFolderName = ""
-#         while findFolderName != folder:
-#             mainfolder = []
-#             location = fr"{drive}:\\"
-#             folder =  os.listdir(location)
-#             for name in folder:
-#                 locationName = f"{location}{name}"
-#                 name, extension = os.path.splitext(locationName)
-#                 if (not name.startswith('$') ) and extension =="":
-#                     mainfolder.append(name)
-#                     print(name)
-
-
-
         
 
 
@@ -79,18 +62,27 @@ if __name__ == "__main__":
                 openWindowIsFolder = False
                 if activeWindow == "explorer.exe":
                     openWindowIsFolder = True
-                    openWindowsFolderName = getActiveWindowTitle()
+                    openWindowsFolderName = getActiveWindowTitle() 
 
                 if  type(returnValue) == str:
                     if openWindowIsFolder:
-                        print('str  to file')
-                        
+                        # if open windows name == exploler.exe
+                        # String to text file.
+
+                        # ????????\{openWindowsFolderName}\saveHere.txt
+                        #                    ^
+                        #                   ||
+                        #how can i get previous from this location
+                        print('str to file')
                     else:
                         pressCtrlV()
+
+
                 elif  type(returnValue) == PngImageFile:
                     if openWindowIsFolder:
+                        # if open windows name == exploler.exe
+                        # Image to img file
                         print('img to file')
-                        # açık olan exploler.exedeki dosya lokasyonuna eriş
 
                     else:
                         pressCtrlV()
